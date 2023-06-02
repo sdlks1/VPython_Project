@@ -5,3 +5,5 @@ dt = 0.01
 class ray:
     def __init__(self):
         pass
+    def update(self):
+        pass
