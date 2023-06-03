@@ -1,8 +1,11 @@
 from raycast import *
 
+if __name__ == "__main__":
 
-t = 0
-while True:
-    rate(1/dt)
+    init()
 
-    t += dt
+    t = 0
+    while True:
+        rate(1/dt)
+
+        t += dt
