@@ -1,18 +1,14 @@
 from vpython import *
 from math import *
 
-dt = 0.01
-slit = []
-WV = 0
+DT = .01
+IMAGE_P = []
 
-class ray:
-    def __init__(self, index, wavelen):
-        self.index = index
-        self.wavelen = wavelen
-    def project(self, l):
-        return vec(cos((l/self.wavelen)*2*pi), sin((l/self.wavelen)*2*pi))
-
-def init(slitn):
-    slit.clear()
-    for i in range(slitn):
-        slit.append(tuple((vec(0,0,0), ray(i, WV))))
+class image_seg:
+    def __init__(self):
+        self.obj = box()
+        self.gc = 0 # Grayscale Value
+    def set_color(self):
+        pass
+    def update(self):
+        self.obj = box()

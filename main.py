@@ -1,11 +1,11 @@
 from raycast import *
 
-if __name__ == "__main__":
+# Initialize
+for i in range(-30, 31):
+    IMAGE_P.append(box(color=vec(0.6,0.6,0.6)))
 
-    init()
+t = 0
+while True:
+    rate(1/DT)
 
-    t = 0
-    while True:
-        rate(1/dt)
-
-        t += dt
+    t += DT
