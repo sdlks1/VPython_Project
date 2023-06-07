@@ -2,14 +2,18 @@ from vpython import *
 from math import *
 
 SHOW_SLIT = False
+DEBUG = False
 
 DT = .01
-image_res = .01  # Image Pixel "Length"
+image_res = .1  # Image Pixel "Length"
 IMAGE_P = []
-slitN = 1
+slitN = 10
 slitL = 2
 SLIT = []
 LAMBDA = 1
+
+def DBUG(prompt, end='\n'):
+    if DEBUG: print(prompt, end=end)
 
 class image_seg:
     def __init__(self, pos, c, index):
