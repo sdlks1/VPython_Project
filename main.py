@@ -14,8 +14,8 @@ for i in SLIT:
         s = sin( mag( i.obj.pos-j.obj.pos )/LAMBDA * 2 * pi )
         j.illumination += vec(c,s,0)
 for i in IMAGE_P:
-    # print("Set Pixel["+str(i.index)+"] illumination : "+str(mag(i.illumination)))
-    print("Pixel["+str(i.index)+"] illumination vector "+str(i.illumination.x), str(i.illumination.y))
+    # DBUG("Set Pixel["+str(i.index)+"] illumination : "+str(mag(i.illumination)))
+    DBUG("Pixel["+str(i.index)+"] illumination vector "+str(i.illumination.x), str(i.illumination.y))
     illu = 1 - (mag(i.illumination)/slitN)
     i.set_color(illu)
 

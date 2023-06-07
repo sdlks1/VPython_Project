@@ -2,11 +2,15 @@ from vpython import *
 from math import *
 
 SHOW_SLIT = False
+DEBUG = False
+
+def DBUG(prompt, end='\n'):
+    if DEBUG: print(prompt, end=end)
 
 DT = .01
 image_res = .01  # Image Pixel "Length"
 IMAGE_P = []
-slitN = 1
+slitN = 2
 slitL = 2
 SLIT = []
 LAMBDA = 1
