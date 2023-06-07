@@ -2,27 +2,22 @@ from vpython import *
 from math import *
 
 DT = .01
+image_res = .01  # Image Pixel "Length"
 IMAGE_P = []
+slitN = 10
+slitL = 2
+SLIT = []
+LAMBDA = 1
 
 class image_seg:
-    def __init__(self, pos, c):
-        self.obj = box(color=c, pos=pos, height=10, width=.5, length=.5)
-        self.gc = 0 # Grayscale Value
-    def set_color(self):
-        self.obj.color = vec(self.gc, self.gc, self.gc)
-    def update(self):
-        pass
+    def __init__(self, pos, c, index):
+        self.obj = box(color=c, pos=pos, height=10, width=.5, length=image_res)
+        self.index = index
+        self.illumination = vec(0, 0, 0)
+    def set_color(self, gc):
+        self.obj.color = vec(gc, gc, gc)
 
-class ray:
-    def __init__(self, pos, v, theta):
-        self.obj = sphere(color=vec(1,1,1), pos=pos, size=.25)
-        self.obj.v = vec(v*cos(theta), 0, -v*sin(theta))
-    def collision(self) -> (bool,int):
-        if self.obj.pos.z <= .75:
-            # Collided
-            return True, -1
-        else:
-            return False, -1
-    def update(self):
-        self.obj.pos += self.obj.v*DT
-        self.collision()
+class slit:
+    def __init__(self, pos, index):
+        self.obj = sphere(radius=.5, pos=pos, color=color.red)
+        self.index = index
