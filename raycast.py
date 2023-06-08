@@ -8,7 +8,7 @@ def DBUG(prompt, end='\n'):
     if DEBUG: print(prompt, end=end)
 
 DT = .01
-image_res = .01  # Image Pixel "Length"
+image_res = .1  # Image Pixel "Length"
 IMAGE_P = []
 slitN = 2
 slitL = 2

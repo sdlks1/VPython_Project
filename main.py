@@ -23,8 +23,11 @@ for i in SLIT:
 for i in IMAGE_P:
     # DBUG("Set Pixel["+str(i.index)+"] illumination : "+str(mag(i.illumination)))
     DBUG("Pixel["+str(i.index)+"] illumination vector ("+str(i.illumination.x)+' , '+str(i.illumination.y)+')')
-    illu = 1 - (mag(i.illumination)/slitN)
-    i.set_color(illu)
+    if slitN == 1:
+        i.set_color(i.illumination.y)
+    else:
+        illu = 1 - (mag(i.illumination)/slitN)
+        i.set_color(illu)
 
 
 # t = 0
