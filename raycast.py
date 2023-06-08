@@ -1,8 +1,8 @@
 from vpython import *
 from math import *
 
-SHOW_SLIT = False
-DEBUG = False
+SHOW_SLIT = True
+DEBUG = True
 
 def DBUG(prompt, end='\n'):
     if DEBUG: print(prompt, end=end)
