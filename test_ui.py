@@ -1,7 +1,7 @@
 """
 To do list:
-1. Slits number botton 
-3. Slits distance botton
+1. Slits number button
+3. Slits distance button
 """
 from vpython import *
 
