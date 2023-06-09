@@ -1,26 +1,11 @@
-from vpython import *
-
-# winput N & L
-def set_N():
-    print
-wi_N = winput(bind=set_N)
-
-def set_L():
-    pass
-wi_L = winput(bind=set_L)
-
-# Simulate button
-btndown = False
-def simulating():
-    global btndown
-    if _____:
-        btndown = True
-    else:
-        btndown = False
-sim_btn = button(text="Simulate", )
-
-# Is Simulating
-
-def evt(func):
-    if btndown:
-        func(N,L)
+# from vpython import *
+#
+# """ Fnuction Setup """
+# def empty_func():
+#     pass
+# simulate = empty_func
+#
+#
+# """ UI Setup """
+# label_slitN = text()
+# prompt_slitN = winput(bind=empty_func, )

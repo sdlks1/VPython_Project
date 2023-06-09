@@ -1,19 +1,20 @@
 from vpython import *
-from math import *
+from dataclasses import dataclass
 
-SHOW_SLIT = True
+
+SHOW_SLIT = False
 DEBUG = False
 
 def DBUG(prompt, end='\n'):
     if DEBUG: print(prompt, end=end)
 
-DT = .01
 image_res = .01  # Image Pixel "Length"
 IMAGE_P = []
 slitN = 1
 slitL = 2
 SLIT = []
 LAMBDA = 1
+
 
 class image_seg:
     def __init__(self, pos, c, index):
