@@ -1,7 +1,7 @@
 from vpython import *
 from math import *
 
-SHOW_SLIT = False
+SHOW_SLIT = True
 DEBUG = False
 
 def DBUG(prompt, end='\n'):
@@ -10,8 +10,8 @@ def DBUG(prompt, end='\n'):
 DT = .01
 image_res = .01  # Image Pixel "Length"
 IMAGE_P = []
-slitN = 2
-slitL = 5
+slitN = 1
+slitL = 2
 SLIT = []
 LAMBDA = 1
 
