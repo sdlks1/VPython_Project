@@ -7,14 +7,14 @@ from math import *
 class Event(): # 建立event這個class
     def __init__(self): # 物件屬性：是個空空的 list
         self.events = []
-    def prompt_slitN(N):
-        events.append(N)
+    def prompt_slitN(self):
+        self.events.append("N")
         # 因為bind不能讀取變數，因此將"讀取狹縫數的函式"寫在 class Event 裡面
-    def prompt_slitL(L):
-        events.append(L)
+    def prompt_slitL(self):
+        self.events.append("L")
         # 因為bind不能讀取變數，因此將"讀取狹縫間距的函式"寫在 class Event 裡面
-    def prompt_sim(sim):
-        events.append(sim)
+    def prompt_sim(self):
+        self.events.append("sim")
         # 因為bind不能讀取變數，因此將"判斷是否模擬的函式"寫在 class Event 裡面
 
 events = Event() # events 是 class Event 的物件
@@ -109,10 +109,10 @@ button(text="Simulate", bind=Event.prompt_sim)
 Simulate()
 
 while True:
-    wt_slitN_v.text = f"{slider_slitN.value}"
-    wt_slitL_v.text = f"{slider_slitL.value}"
-    if len(Event.events) != 0:
-        event = Event.events[0]
+    # wt_slitN_v.text = f"{slider_slitN.value}"
+    # wt_slitL_v.text = f"{slider_slitL.value}"
+    if len(events.events) != 0:
+        event = events.events[0]
         if event == "N":
             wt_slitN_v.text = slider_slitN.value
         elif event == "L":
