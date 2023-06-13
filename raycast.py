@@ -8,9 +8,10 @@ DEBUG = False
 def DBUG(prompt, end='\n'):
     if DEBUG: print(prompt, end=end)
 
+
 image_res = .01  # Image Pixel "Length"
 IMAGE_P = []
-slitN = 1
+slitN = 2
 slitL = 2
 SLIT = []
 LAMBDA = 1
