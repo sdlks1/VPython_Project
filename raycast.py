@@ -12,7 +12,7 @@ def DBUG(prompt, end='\n'):
 image_res = .01  # Image Pixel "Length"
 IMAGE_P = []
 slitN = 2
-slitL = 10
+slitL = 2
 SLIT = []
 LAMBDA = 1
 

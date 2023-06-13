@@ -1,16 +1,25 @@
 from raycast import *
-from ui import *
+# from ui import *
 from math import *
 
 
 """ Event Setup """
-event = [] # 建立event這個list
+class Event(): # 建立event這個class
+    def __init__(self): # 物件屬性：是個空空的 list
+        self.events = []
+    def prompt_slitN(N):
+        events.append(N)
+        # 因為bind不能讀取變數，因此將"讀取狹縫數的函式"寫在 class Event 裡面
+    def prompt_slitL(L):
+        events.append(L)
+        # 因為bind不能讀取變數，因此將"讀取狹縫間距的函式"寫在 class Event 裡面
+    def prompt_sim(sim):
+        events.append(sim)
+        # 因為bind不能讀取變數，因此將"判斷是否模擬的函式"寫在 class Event 裡面
 
-# slitN bind function
-# event.append(prompt_slitN, prompt_slitL, prompt_slitLAMBDA)
+events = Event() # events 是 class Event 的物件
 
-
-
+is_simulating = False # 布林值，判斷是否正在運行
 
 """ Initialize """
 # Canvas Setup :
@@ -45,7 +54,7 @@ def Simulate():
 
     init()
 
-    event.append(prompt_slitN, prompt_slitL, prompt_slitLAMBDA)
+    is_simulating = True
 
     # 巢狀迴圈（Nested Loop），分別迭代狹縫以及屏幕像素，使其一一對應
     for i in SLIT:
@@ -70,6 +79,8 @@ def Simulate():
         # 最後再將像素的RGB值改為 vec(illu, illu, illu)
         # 註：RGB值，當R=G=B，則為灰階色彩（彩度=0  吧）
         i.set_color(illu)
+    
+    is_simulating = False
 
 def set_slitN(n):
     slitN = n
@@ -82,20 +93,29 @@ init()
 
 """ UI """
 wt_slitN = wtext(text="Slit Count")
-slider_slitN = slider(min=2, max=10, step=1, length=220, bind=None)
+slider_slitN = slider(min=2, max=10, step=1, length=220, bind=Event.prompt_slitN)
 wt_slitN_v = wtext(text=f"{slider_slitN.value}")
 scene.append_to_caption('\n')
 
 wt_slitL = wtext(text="Slit Spacing")
-slider_slitL = slider(min=1, max=10, step=.1, length=220, bind=None)
+slider_slitL = slider(min=1, max=10, step=.1, length=220, bind=Event.prompt_slitL)
 wt_slitL_v = wtext(text=f"{slider_slitL.value}")
 scene.append_to_caption('\n')
 
-button(text="Simulate", bind=Simulate)
+button(text="Simulate", bind=Event.prompt_sim)
 
 
-# Simulate()
+""" Running Program """
+Simulate()
 
-# while True:
-#     wt_slitN_v.text = f"{slider_slitN.value}"
-#     wt_slitL_v.text = f"{slider_slitL.value}"
+while True:
+    wt_slitN_v.text = f"{slider_slitN.value}"
+    wt_slitL_v.text = f"{slider_slitL.value}"
+    if len(Event.events) != 0:
+        event = Event.events[0]
+        if event == "N":
+            wt_slitN_v.text = slider_slitN.value
+        elif event == "L":
+            wt_slitL_v.text = slider_slitL.value
+        elif event == "sim" and not is_simulating:
+            Simulate()
