@@ -2,11 +2,21 @@ from raycast import *
 from ui import *
 from math import *
 
+
+""" Event Setup """
+event = [] # 建立event這個list
+
+# slitN bind function
+# event.append(prompt_slitN, prompt_slitL, prompt_slitLAMBDA)
+
+
+
+
 """ Initialize """
 # Canvas Setup :
 #   width=772 是為了讓畫面的左右邊界剛好切齊成像屏幕
 #   fov=.001 是拿來模擬平行投影
-scene = canvas(width=772, height=768, center=vec(0, 0, 0), background=vec(0.6, 0.8, 0.8), range=15, fov=.001)
+scene = canvas(width=772, height=768, center=vec(0,0,0), background=vec(0.6, 0.8, 0.8), range=15, fov=0.001)
 
 def init():
     # Imaging Plane Generation :
@@ -34,6 +44,8 @@ def Simulate():
     assert slitN >= 2, "Slit Count Should be Greater or Equal to 2" # 防呆（單狹縫屬於例外，不討論）
 
     init()
+
+    event.append(prompt_slitN, prompt_slitL, prompt_slitLAMBDA)
 
     # 巢狀迴圈（Nested Loop），分別迭代狹縫以及屏幕像素，使其一一對應
     for i in SLIT:
@@ -69,7 +81,6 @@ init()
 
 
 """ UI """
-"""
 wt_slitN = wtext(text="Slit Count")
 slider_slitN = slider(min=2, max=10, step=1, length=220, bind=None)
 wt_slitN_v = wtext(text=f"{slider_slitN.value}")
@@ -81,9 +92,9 @@ wt_slitL_v = wtext(text=f"{slider_slitL.value}")
 scene.append_to_caption('\n')
 
 button(text="Simulate", bind=Simulate)
-"""
 
-Simulate()
+
+# Simulate()
 
 # while True:
 #     wt_slitN_v.text = f"{slider_slitN.value}"
