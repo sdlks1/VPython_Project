@@ -54,7 +54,7 @@ def Simulate():
         # 這時，強度量值會介於0～N(slitN)之間（最大值發生在每個狹縫所發出的光波在抵達屏幕時洽都是波峰，最小值則發生在洽都為波谷時）
         # 所以需要除以N，使強度量值控制在0～1之間（vpython RGB參數吃的是0～1）
         # 這時計算出來的量值恰好明暗相反，所以用1減
-        illu = 1 - (mag(i.illumination) / slitN)
+        illu = (mag(i.illumination) / slitN)
         # 最後再將像素的RGB值改為 vec(illu, illu, illu)
         # 註：RGB值，當R=G=B，則為灰階色彩（彩度=0  吧）
         i.set_color(illu)
