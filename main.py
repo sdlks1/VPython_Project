@@ -1,5 +1,4 @@
 from raycast import *
-# from ui import *
 from math import *
 
 
@@ -80,12 +79,17 @@ def Simulate():
         # 最後再將像素的RGB值改為 vec(illu, illu, illu)
         # 註：RGB值，當R=G=B，則為灰階色彩（彩度=0  吧）
         i.set_color(illu)
+
+    if CAPTURE: scene.capture(str(slitN)+'_'+str(slitL))
     
     is_simulating = False
 
 
 
 """ UI """
+wt_status = wtext(text="Simulation Complete")
+scene.append_to_caption("\n\n")
+
 wt_slitN = wtext(text="Slit Count")
 slider_slitN = slider(min=2, max=10, step=1, length=220, bind=events.prompt_slitN)
 wt_slitN_v = wtext(text=f"{slider_slitN.value}")
@@ -110,5 +114,7 @@ while True:
         elif event == "L":
             slitL = wt_slitL_v.text = slider_slitL.value
         elif event == "sim" and not is_simulating:
+            wt_status.text = "Simulating"
             Simulate()
+            wt_status.text = "Simulation Complete"
         del events.events[0]
