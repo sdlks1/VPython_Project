@@ -1,4 +1,5 @@
 from vpython import *
+from main import slitN,slitL,LAMBDA
 
 
 """ Variables """
@@ -30,6 +31,29 @@ class slit:
     def __init__(self, pos, index):
         self.obj = sphere(radius=.5, pos=pos, color=color.red, visible=SHOW_SLIT)
         self.index = index
+
+
+""" Event Setup """
+class Event:
+    def __init__(self):
+        global slitN, slitL
+
+        self.events = []
+        self.key = {
+            'N': lambda: (
+                globals().update(slitN=slider_slitN.value),
+                print('a')
+            )
+        }
+    def push(self, item):
+        self.events.append(item)
+    def pop(self):
+        del self.events[0]
+    # def update(self):
+    #     key = self.events[0]
+    #     if
+
+events = Event()
 
 
 """ Initialize """
