@@ -15,8 +15,10 @@ class Event: # 建立event這個class
     def prompt_sim(self):
         self.events.append("sim")
         # 因為bind不能讀取變數，因此將"判斷是否模擬的函式"寫在 class Event 裡面
+    def prompt_visible(self):
+        self.events.append("vis")
 
-events = Event() # events 是 class Event 的物件
+events = Event()
 
 
 """ Initialize """
@@ -98,9 +100,13 @@ scene.append_to_caption('\n')
 wt_slitL = wtext(text="Slit Spacing")
 slider_slitL = slider(min=1, max=10, step=.1, length=220, bind=events.prompt_slitL)
 wt_slitL_v = wtext(text=f"{slider_slitL.value}")
-scene.append_to_caption('\n')
+scene.append_to_caption("\n\n")
 
 btn_simulate = button(text="Simulate", bind=events.prompt_sim)
+scene.append_to_caption("\n\n\n")
+
+
+
 
 
 """ Running Program """
