@@ -1,7 +1,4 @@
 from vpython import *
-from dataclasses import dataclass
-import Constants_
-from event import event
 
 
 class Label:
@@ -10,20 +7,30 @@ class Label:
     def modify(self, txt):
         self.label.text = txt
 
+class Slider:
+    def __init__(self, min, max, step, length, bind):
+        self.slider_ = slider(min=min, max=max, step=step, length=length, bind=bind)
+    def value(self):
+        return self.slider_.value
 
-""" UI Declaration """
-wt_status = Label("Simulation Complete")
-scene.append_to_caption("\n\n")
+class Event:
+    def __init__(self):
+        self.events = []
+    def push_N(self):
+        self.events.append('N')
+    def push_L(self):
+        self.events.append('L')
+    def push_Lambda(self):
+        self.events.append("Lambda")
+    def push_D(self):
+        self.events.append('D')
+    def push_Sim(self):
+        self.events.append("sim")
+    def pop(self):
+        del self.events[0]
 
-wt_slitN = Label("Slit Count")
-slider_slitN = slider(min=2, max=10, step=1, length=220, bind=lambda i='N':event.push(i))
-wt_slitN_v = Label(f"{slider_slitN.value}")
-scene.append_to_caption('\n')
+event = Event()
 
-wt_slitL = Label("Slit Spacing")
-slider_slitL = slider(min=1, max=10, step=.1, length=220, bind=lambda i='L':event.push(i))
-wt_slitL_v = Label(f"{slider_slitL.value}")
-scene.append_to_caption("\n\n")
 
-btn_simulate = button(text="Simulate", bind=lambda i="sim":event.push(i))
-scene.append_to_caption("\n\n\n")
+
+
